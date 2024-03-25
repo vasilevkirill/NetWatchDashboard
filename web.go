@@ -7,5 +7,8 @@ import (
 
 func webRunServer() {
 	beego.Router("/", &controllers.MainController{})
+	beego.Router("/login", &controllers.LoginController{})
+	beego.SetStaticPath("/static", "./static")
+	beego.BConfig.WebConfig.AutoRender = true
 	beego.Run()
 }
