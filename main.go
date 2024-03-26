@@ -1,20 +1,10 @@
 package main
 
 import (
-	"log"
+	_ "NetWatchDashboard/routers"
+	beego "github.com/beego/beego/v2/server/web"
 )
 
 func main() {
-	ConfigLoad()
-	// Бесконечный цикл, чтобы программа продолжала работу и не завершалась сразу
-	webRunServer()
-	select {}
-}
-
-func checkFatalError(err error) {
-	if err == nil {
-		return
-	}
-	log.Print("Fatal Error")
-	log.Fatalln(err.Error())
+	beego.Run()
 }
