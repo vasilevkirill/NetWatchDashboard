@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Авторизация</title>
-    <link href="/static/tabler.min.css" rel="stylesheet"/>
+    <link href="/static/css/tabler.min.css" rel="stylesheet"/>
 </head>
 <body  class=" d-flex flex-column bg-white">
 <div class="row g-0 flex-fill">
     <div class="col-12 col-lg-6 col-xl-4 border-top-wide border-primary d-flex flex-column justify-content-center">
         <div class="container container-tight my-5 px-lg-5">
             <div class="text-center mb-4 ">
-                <a href="/" class="navbar-brand navbar-brand-autodark"><img src="/static/66016cf86cb97.png" class="rounded" height="128" alt=""></a>
+                <a href="/" class="navbar-brand navbar-brand-autodark"><img src="/static/img/66016cf86cb97.png" class="rounded" height="128" alt=""></a>
             </div>
             <h2 class="h3 text-center mb-3">Авторизация</h2>
             {{if .error}}
@@ -46,9 +46,9 @@
         </div>
     </div>
     <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
-        <div class="bg-cover h-100 min-vh-100" style="background-image: url('/static/660164f777061.png')"></div>
+        <div class="bg-cover h-100 min-vh-100" style="background-image: url('/static/img/660164f777061.png')"></div>
     </div>
 </div>
-<script src="/static/tabler.min.js" defer></script>
+<script src="/static/js/tabler.min.js" defer></script>
 </body>
 </html>

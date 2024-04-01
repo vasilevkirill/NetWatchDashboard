@@ -28,21 +28,7 @@ func (this *LoginController) Post() {
 		return
 	}
 	this.SetSession("username", username)
-	this.Redirect("/", 302)
+	this.Redirect("/ui/", 302)
 	return
-
-}
-
-func (this *MainController) IsLogin() bool {
-
-	// Получаем значение сессии с ключом "username"
-	username := this.GetSession("username")
-	// Проверяем, существует ли значение сессии
-	if username == nil {
-		return false
-	}
-	// В данном примере просто проверяем, что имя пользователя не пустое
-	// В вашем реальном приложении здесь должна быть более сложная логика
-	return username != ""
 
 }
