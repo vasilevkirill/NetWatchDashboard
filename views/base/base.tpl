@@ -29,5 +29,6 @@
 
 </div>
 <script src="/static/js/tabler.min.js" defer></script>
+<script src="/static/js/reload.min.js" defer></script>
 </body>
 </html>

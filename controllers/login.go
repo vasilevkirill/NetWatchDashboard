@@ -1,34 +1,44 @@
 package controllers
 
 import (
+	"NetWatchDashboard/models"
 	beego "github.com/beego/beego/v2/server/web"
+	"log"
 )
 
 type LoginController struct {
 	beego.Controller
 }
 
-func (this *LoginController) Get() {
-	this.Data["Website"] = "My Simple Beego Site"
-	this.Data["Email"] = "example@example.com"
-	errorMessage := this.GetSession("error")
+func (c *LoginController) Get() {
+	errorMessage := c.GetSession("error")
 	if errorMessage != nil {
-		this.Data["error"] = errorMessage
-		this.DelSession("error")
+		c.Data["error"] = errorMessage
+		c.DelSession("error")
 	}
-	this.TplName = "login.tpl"
+	c.TplName = "login.tpl"
+
 }
 
-func (this *LoginController) Post() {
-	username := this.GetString("username")
-	password := this.GetString("password")
-	if username != "admin" || password != "admin" {
-		this.SetSession("error", "Не правильно имя пользователя или пароль")
-		this.Get()
+func (c *LoginController) Post() {
+	username := c.GetString("username")
+	password := c.GetString("password")
+	user, err := models.UserAuth(username, password)
+
+	log.Printf("%#v", user)
+	if err != nil {
+		log.Println(err)
+		c.SetSession("error", "Не правильно имя пользователя или пароль")
+		c.Get()
 		return
 	}
-	this.SetSession("username", username)
-	this.Redirect("/ui/", 302)
+	if user.Id == 0 {
+		c.SetSession("error", "Не правильно имя пользователя или пароль")
+		c.Get()
+		return
+	}
+	log.Printf("%#v", user)
+	c.SetSession("username", user.Login)
+	c.Redirect("/ui/", 302)
 	return
-
 }
